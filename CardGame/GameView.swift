@@ -96,7 +96,7 @@ struct GameView: View {
                         .frame(width: 400.0, height: 700.0).foregroundColor(Color.orange)
                     VStack {
                         Text("PLAYER WINS").font(.title).foregroundColor(Color.white).multilineTextAlignment(.center)
-                        Text("PLAYER SCORE: " + (playerScore - cpuScore)).font(.title).foregroundColor(Color.white).multilineTextAlignment(.center)
+                        Text("PLAYER SCORE: " + String(playerScore - cpuScore)).font(.title).foregroundColor(Color.white).multilineTextAlignment(.center)
 
                         NavigationLink(destination: ContentView()) {
                             ZStack() {
