@@ -19,7 +19,7 @@ struct GameView: View {
             Image("background").ignoresSafeArea()
             VStack() {
                 Spacer()
-                Image("logo").resizable().aspectRatio(contentMode: .fit).padding(/*@START_MENU_TOKEN@*/.horizontal, 80.0/*@END_MENU_TOKEN@*/)
+                Image("logo").resizable().aspectRatio(contentMode: .fit).padding(.horizontal, 80.0)
                 Spacer()
                 HStack() {
                     
@@ -73,6 +73,47 @@ struct GameView: View {
                     Spacer()
                 }
                 Spacer()
+            }
+            if cpuScore >= 10 {
+                ZStack {
+                    Rectangle()
+                        .frame(width: 400.0, height: 700.0).foregroundColor(Color.orange)
+                    VStack {
+                        Text("CPU WINS").font(.title).foregroundColor(Color.white).multilineTextAlignment(.center)
+                    
+                        NavigationLink(destination: ContentView()) {
+                            ZStack() {
+                                Rectangle()
+                                    .frame(width: 240.0, height: 70.0).foregroundColor(Color.white)
+                                Text("PLAY AGAIN").font(.title).foregroundColor(Color.black).multilineTextAlignment(.center)
+                            }
+                        }.padding(10.0)
+                    }
+                }
+            } else if playerScore >= 10 {
+                ZStack {
+                    Rectangle()
+                        .frame(width: 400.0, height: 700.0).foregroundColor(Color.orange)
+                    VStack {
+                        Text("PLAYER WINS").font(.title).foregroundColor(Color.white).multilineTextAlignment(.center)
+                    
+                        NavigationLink(destination: ContentView()) {
+                            ZStack() {
+                                Rectangle()
+                                    .frame(width: 240.0, height: 70.0).foregroundColor(Color.white)
+                                Text("PLAY AGAIN").font(.title).foregroundColor(Color.black).multilineTextAlignment(.center)
+                            }
+                        }.padding(10.0)
+                        
+                        NavigationLink(destination: RecentScoresView(score: playerScore - cpuScore)) {
+                            ZStack() {
+                                Rectangle()
+                                    .frame(width: 360.0, height: 70.0).foregroundColor(Color.white)
+                                Text("VIEW RECENT SCORES").font(.title).foregroundColor(Color.black).multilineTextAlignment(.center)
+                            }
+                        }.padding(10.0)
+                    }
+                }
             }
         }
     }
